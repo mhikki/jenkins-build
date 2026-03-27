@@ -1,6 +1,13 @@
 node{
   def app
-  
+ 
+ stage('Check Docker') {
+    steps {
+        sh 'echo $PATH'
+        sh 'which docker'
+        sh 'docker --version'
+    }
+}
     stage('clone') {
         checkout scm
         
