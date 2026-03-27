@@ -32,27 +32,4 @@ spec:
             }
         }
 
-        stage('Build Image') {
-            steps {
-                container('docker') {
-                    script {
-                        app = docker.build("mhikki/nginx")
-                    }
-                }
-            }
-        }
-
-        stage('Run Image') {
-            steps {
-                container('docker') {
-                    script {
-                        docker.image('mhikki/nginx').withRun('-p 80:80') { c ->
-                            sh 'docker ps'
-                            sh 'curl localhost'
-                        }
-                    }
-                }
-            }
-        }
-    }
 }
